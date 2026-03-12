@@ -3,6 +3,11 @@
 # Use `parent` to nest items into a dropdown.
 
 [[main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 5
+
+[[main]]
   name = "About"
   pageRef = "about"
   weight = 10
@@ -16,6 +21,11 @@
   name = "Press Kit"
   pageRef = "press"
   weight = 30
+
+[[main]]
+  name = "Sign Up"
+  pageRef = "signup"
+  weight = 40
 
 # Social icon links — no name, just icons in the header nav.
 # Hugo menu entries cannot reference site params, so these URLs must be kept
