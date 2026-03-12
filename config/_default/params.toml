@@ -11,7 +11,8 @@ enableCodeCopy = false
 mainSections = ["devlog"]
 
 disableImageOptimization = false
-disableTextInHeader = false
+disableTextInHeader = true
+logo = "img/Overlooted Logo Placeholder.png"
 
 defaultBackgroundImage = "img/hero-bg.svg"
 

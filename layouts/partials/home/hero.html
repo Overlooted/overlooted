@@ -46,7 +46,7 @@
           {{ end }}
         </div>
         <div
-          class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center justify-center text-center">
+          class="relative px-4 py-6 sm:px-6 sm:py-10 lg:py-12 lg:px-8 flex flex-col items-center justify-center text-center">
           {{ with .Site.Params.Author.image }}
             {{ $authorImage := "" }}
             {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
@@ -71,20 +71,27 @@
                 data-zoom-src="{{ $squareImage.RelPermalink }}">
             {{ end }}
           {{ end }}
-          {{ if not $disableHeroImageFilter }}
+          {{ $logoImage := resources.Get "img/Overlooted Logo Placeholder.png" }}
+          {{ if $logoImage }}
+            <img
+              class="mb-2 max-h-48 w-auto nozoom"
+              src="{{ $logoImage.RelPermalink }}"
+              alt="{{ .Site.Title }}">
+          {{ else if not $disableHeroImageFilter }}
             <h1 class="mb-2 text-4xl font-extrabold text-neutral-200">
               {{ .Site.Params.Author.name | default .Site.Title }}
             </h1>
-            {{ with .Site.Params.Author.headline }}
-              <h2 class="mt-0 mb-0 text-xl text-neutral-300">
-                {{ . | markdownify }}
-              </h2>
-            {{ end }}
           {{ else }}
             <h1 class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
               {{ .Site.Params.Author.name | default .Site.Title }}
             </h1>
-            {{ with .Site.Params.Author.headline }}
+          {{ end }}
+          {{ with .Site.Params.Author.headline }}
+            {{ if not $disableHeroImageFilter }}
+              <h2 class="mt-0 mb-0 text-xl text-neutral-300">
+                {{ . | markdownify }}
+              </h2>
+            {{ else }}
               <h2 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
                 {{ . | markdownify }}
               </h2>
